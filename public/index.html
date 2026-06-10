@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adnama Nosilla</title>
+
+    <meta name="description" content="Amanda's home on the web"/>
+    <meta name="robots" content="index,follow"/>
+    <meta property="og:title" content="Amanda Allison"/>
+    <meta property="og:image" content="beep-boop.webp"/>
+    <meta name="twitter:card" content="summary"/>
+
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="content" role="main">
+        <h1 class="title">About Amanda</h1>
+
+        <audio id="sound1" src="beepboop.mp3" preload="auto"></audio>
+        <img src="beep-boop.webp" class="illustration" alt="computer barfing" title="Clicky!"
+             tabindex="0" role="button" aria-label="Play sound"
+             onclick="document.getElementById('sound1').play();"
+             onkeydown="if(event.key==='Enter'||event.key===' ')document.getElementById('sound1').play();"/>
+        <div class="purr">
+            <h2>
+                Principal Software Engineer
+            </h2>
+            <p>Hi. My name is <strong>Amanda</strong>. I'm a software engineer. I live in Atlanta, GA with my favorite human and <button class="katniss-trigger" onclick="toggleKatniss()" aria-expanded="false" aria-controls="katniss-sticker">Katniss</button>.</p>
+            <p>Find me on <strong><a target="_blank" href="https://github.com/amanda-allison">Github</a></strong>, <strong><a
+                        target="_blank" href="https://www.linkedin.com/in/adnama-nosilla/">LinkedIn</a></strong>, and
+                <strong><a target="_blank" href="https://exercism.io/profiles/adnama-nosilla">Exercism.io</a></strong>.
+            </p>
+            <audio id="purr" src="nino.m4a" preload="none"></audio>
+            <div class="cat-sticker-wrap" id="katniss-sticker">
+                <img data-src="katniss.webp" class="cat-sticker" alt="Katniss the cat"
+                     tabindex="0" role="button" aria-label="Katniss says purr"
+                     onclick="playPurr();"
+                     onkeydown="if(event.key==='Enter'||event.key===' ')playPurr();"/>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="copyright">
+    &copy; <span id="year"></span> Amanda Allison
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+    function toggleKatniss() {
+        const sticker = document.getElementById('katniss-sticker');
+        const img = sticker.querySelector('.cat-sticker');
+        const trigger = document.querySelector('.katniss-trigger');
+        if (!img.src && img.dataset.src) {
+            img.src = img.dataset.src;
+        }
+        const showing = sticker.classList.toggle('visible');
+        trigger.setAttribute('aria-expanded', showing);
+    }
+
+    let purrCtx, purrGain;
+    function playPurr() {
+        const audio = document.getElementById('purr');
+        if (!purrCtx) {
+            purrCtx = new AudioContext();
+            const source = purrCtx.createMediaElementSource(audio);
+            purrGain = purrCtx.createGain();
+            purrGain.gain.value = 4;
+            source.connect(purrGain);
+            purrGain.connect(purrCtx.destination);
+        }
+        purrCtx.resume();
+        audio.currentTime = 0;
+        audio.play();
+    }
+</script>
+</body>
+
+</html>
