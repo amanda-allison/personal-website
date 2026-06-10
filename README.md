@@ -1,36 +1,19 @@
 # amanda-allison.org
 
-Personal website hosted on Google Firebase.
-
-## Initial Setup
-
-`.firebaserc` is gitignored. After cloning, link to the Firebase project before deploying:
-
-```sh
-firebase use --add
-```
+Personal website hosted on GitHub Pages.
 
 ## Local Development
 
 ```sh
-firebase emulators:start
+npx serve docs
 ```
 
-Opens at `http://localhost:5000`.
+Opens at `http://localhost:3000`.
 
-## Deploy (Local)
+## Deploy
 
-```sh
-firebase deploy
-```
-
-If you get an auth error:
-
-```sh
-firebase logout
-firebase login
-```
+Push to `main` — GitHub Pages deploys automatically.
 
 ## Project Structure
 
-All site content is static HTML/CSS in `public/`. Fonts are self-hosted in `public/fonts/`. No build step.
+All site content is static HTML/CSS in `docs/`. Fonts are self-hosted in `docs/fonts/`. No build step.

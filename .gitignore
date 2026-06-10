@@ -1,13 +1,11 @@
 # Logs
 logs
 *.log
-firebase-debug.log*
-firebase-debug.*.log*
 
-# Firebase cache
+# Firebase cache (legacy)
 .firebase/
 
-# Firebase project config
+# Firebase project config (legacy)
 .firebaserc
 
 # dotenv environment variables file
